@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEditor.SearchService;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,6 +45,12 @@ public class GameManager : MonoBehaviour
             score += newScore;
             scoreText.text = "Score : " + score;
         }
+    }
+
+    public void OnPlayerDead(int sceneId)
+    {
+        isGameover = true;
+        SceneManager.LoadScene(sceneId);
     }
 
     public void LoadScene(int sceneId)
