@@ -31,7 +31,7 @@ public class Damage : MonoBehaviour
     {
         if(other.tag == "Meteo" && !isDead)
         {
-            multipleCurHp = multipleCurHp - 10f;
+            multipleCurHp = multipleCurHp - 5f;
             HandleHp();
         }
     }
@@ -41,7 +41,7 @@ public class Damage : MonoBehaviour
         multipleHpBar.value = multipleCurHp / multipleHp;
         if( multipleHpBar.value == 0 )
         {
-            GameManager.instance.OnPlayerDead(0);
+            GameManager.instance.OnPlayerDead(2);
         }
     }
 }
