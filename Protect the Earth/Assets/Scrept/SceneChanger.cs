@@ -7,19 +7,19 @@ public class SceneChanger : MonoBehaviour
 {
     public void GameStart()
     {
-        GameManager.instance.LoadScene(1);
+        SceneManager.LoadScene(1);
         Debug.Log("GameStart!!");
     }
 
     public void Restart()
     {
-        GameManager.instance.LoadScene(0);
+        SceneManager.LoadScene(0);
         Debug.Log("Game ReStart!!");
     }
 
     public void Exit()
     {
-        GameManager.instance.Exit();
+        Application.Quit();
         Debug.Log("GameExit!!");
     }
 }
