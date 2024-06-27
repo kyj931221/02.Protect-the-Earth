@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = Random.Range(5.0f, 10.0f);
+            float waitTime = Random.Range(3.0f, 6.0f);
             yield return new WaitForSeconds(waitTime);
 
             for(int i = 0; i < Random.Range(1,3); i++)
@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
                 rb.AddForce(Vector3.down * Random.Range(5.0f, 10.0f), ForceMode.VelocityChange);
             }
             audio.Play();
-        }
+        } 
     }
 
     void Update()
