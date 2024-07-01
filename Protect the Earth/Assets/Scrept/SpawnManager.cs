@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     public Transform[] Pos;
     public GameObject[] prefab;
+    public GameObject[] prefab2;
 
     AudioSource audio;
 
@@ -13,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     {
         audio = GetComponent<AudioSource>();
         StartCoroutine(WaitAndSpawn()); //코루틴 사용
+        StartCoroutine(WaitAndSpawn2());
     }
 
     IEnumerator WaitAndSpawn()
@@ -35,6 +37,25 @@ public class SpawnManager : MonoBehaviour
             }
             audio.Play();
         } 
+    }
+
+    IEnumerator WaitAndSpawn2() //큰 운석
+    {
+        float waitTime2 = Random.Range(10.0f, 15.0f);
+        yield return new WaitForSeconds(waitTime2);
+
+        for(int i = 0;i < 1; i++)
+        {
+            int iPrefab2 = Random.Range(0, prefab2.Length);
+            int iPos = Random.Range(0, Pos.Length);
+
+            GameObject bigmeteo = Instantiate(prefab2[iPrefab2], Pos[iPos].position, Quaternion.identity);
+            Destroy(bigmeteo, 30f);
+
+            Rigidbody rb2 = bigmeteo.GetComponent<Rigidbody>();
+            rb2.AddForce(Vector3.down * Random.Range(2.0f, 5.0f), ForceMode.VelocityChange);
+        }
+        audio.Play();
     }
 
     void Update()
