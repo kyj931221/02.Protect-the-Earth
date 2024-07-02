@@ -38,25 +38,29 @@ public class SpawnManager : MonoBehaviour
             audio.Play();
         } 
     }
-
+    
     IEnumerator WaitAndSpawn2() //ū �
     {
-        float waitTime2 = Random.Range(10.0f, 15.0f);
-        yield return new WaitForSeconds(waitTime2);
-
-        for(int i = 0;i < 1; i++)
+        while(true)
         {
-            int iPrefab2 = Random.Range(0, prefab2.Length);
-            int iPos = Random.Range(0, Pos.Length);
+            float waitTime2 = Random.Range(20.0f, 25.0f);
+            yield return new WaitForSeconds(waitTime2);
 
-            GameObject bigmeteo = Instantiate(prefab2[iPrefab2], Pos[iPos].position, Quaternion.identity);
-            Destroy(bigmeteo, 30f);
+            for (int i = 0; i < 1; i++)
+            {
+                int iPrefab2 = Random.Range(0, prefab2.Length);
+                int iPos = Random.Range(0, Pos.Length);
 
-            Rigidbody rb2 = bigmeteo.GetComponent<Rigidbody>();
-            rb2.AddForce(Vector3.down * Random.Range(2.0f, 5.0f), ForceMode.VelocityChange);
+                GameObject bigmeteo = Instantiate(prefab2[iPrefab2], Pos[iPos].position, Quaternion.identity);
+                Destroy(bigmeteo, 30f);
+
+                Rigidbody rb2 = bigmeteo.GetComponent<Rigidbody>();
+                rb2.AddForce(Vector3.down * Random.Range(2.0f, 5.0f), ForceMode.VelocityChange);
+            }
+            audio.Play();
         }
-        audio.Play();
     }
+    
 
     void Update()
     {
